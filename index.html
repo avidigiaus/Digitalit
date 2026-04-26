@@ -3,11 +3,14 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
-  <title>Digital It Move | Digital Marketing Agency</title>
-  <!-- Google Fonts & Font Awesome -->
-  <link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,300;14..32,400;14..32,600;14..32,700;14..32,800&display=swap" rel="stylesheet">
+  <title>Digital IT Move | Data, Cloud & Digital Marketing Australia</title>
+  <!-- Google Fonts + Font Awesome 6 -->
+  <link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,300;14..32,400;14..32,500;14..32,600;14..32,700;14..32,800&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+  <!-- FileSaver.js for saving Word file -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/FileSaver.js/2.0.5/FileSaver.min.js"></script>
   <style>
+    /* ----- BASE RESET & GLOBAL ----- */
     * {
       margin: 0;
       padding: 0;
@@ -16,788 +19,696 @@
 
     body {
       font-family: 'Inter', sans-serif;
-      background: #ffffff;
-      color: #1e1e2f;
-      overflow-x: hidden;
+      background-color: #fbfdfe;
+      color: #1A2C3E;
+      line-height: 1.5;
       scroll-behavior: smooth;
     }
 
-    /* Custom Scroll */
-    ::-webkit-scrollbar {
-      width: 8px;
-    }
-    ::-webkit-scrollbar-track {
-      background: #f1f1f1;
-    }
-    ::-webkit-scrollbar-thumb {
-      background: #4f46e5;
-      border-radius: 20px;
-    }
-
-    /* Reusable Container */
     .container {
       max-width: 1280px;
       margin: 0 auto;
-      padding: 0 32px;
+      padding: 0 24px;
     }
 
-    /* Header & Navigation */
-    header {
-      background: rgba(255, 255, 255, 0.96);
-      backdrop-filter: blur(12px);
-      box-shadow: 0 4px 30px rgba(0, 0, 0, 0.03);
-      position: sticky;
-      top: 0;
-      z-index: 1000;
-      transition: all 0.2s ease;
+    /* shared components */
+    .glass-card {
+      background: rgba(255,255,255,0.96);
+      backdrop-filter: blur(0px);
+      border-radius: 32px;
+      box-shadow: 0 20px 35px -12px rgba(0,0,0,0.05), 0 1px 2px rgba(0,0,0,0.02);
+      transition: all 0.3s ease;
+      border: 1px solid rgba(0, 82, 212, 0.08);
     }
-    .navbar {
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      padding: 18px 0;
-      flex-wrap: wrap;
+    .glass-card:hover {
+      transform: translateY(-6px);
+      box-shadow: 0 30px 40px -18px rgba(0,0,0,0.15);
+      border-color: rgba(0, 112, 243, 0.2);
     }
-    .logo {
-      font-size: 1.8rem;
-      font-weight: 800;
-      background: linear-gradient(135deg, #4f46e5, #7c3aed);
-      -webkit-background-clip: text;
-      background-clip: text;
-      color: transparent;
-      letter-spacing: -0.5px;
-    }
-    .logo span {
-      color: #1e1e2f;
-      background: none;
-      -webkit-background-clip: unset;
-      background-clip: unset;
-      font-weight: 700;
-    }
-    .nav-links {
-      display: flex;
-      gap: 2.2rem;
-      align-items: center;
-      list-style: none;
-    }
-    .nav-links li a {
-      text-decoration: none;
-      font-weight: 600;
-      color: #2d2d42;
-      transition: 0.2s;
-      font-size: 1rem;
-    }
-    .nav-links li a:hover, .nav-links li a.active {
-      color: #4f46e5;
-    }
-    .hamburger {
-      display: none;
-      font-size: 1.8rem;
-      cursor: pointer;
-      color: #1e1e2f;
-    }
-
-    /* Buttons */
     .btn-primary {
-      background: linear-gradient(100deg, #4f46e5, #7c3aed);
+      background: linear-gradient(105deg, #0052D4 0%, #4361EE 100%);
+      color: white;
       border: none;
       padding: 12px 28px;
       border-radius: 40px;
       font-weight: 600;
-      color: white;
+      font-size: 1rem;
       cursor: pointer;
-      transition: transform 0.2s, box-shadow 0.2s;
-      display: inline-block;
+      transition: all 0.2s ease;
+      box-shadow: 0 4px 12px rgba(0,82,212,0.25);
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
       text-decoration: none;
-      font-size: 0.95rem;
-      box-shadow: 0 8px 20px rgba(79, 70, 229, 0.25);
     }
     .btn-primary:hover {
-      transform: translateY(-3px);
-      box-shadow: 0 15px 30px rgba(79, 70, 229, 0.35);
+      transform: scale(1.02);
+      background: linear-gradient(105deg, #0040b0 0%, #2b4cd4 100%);
+      box-shadow: 0 8px 20px rgba(0,82,212,0.35);
     }
     .btn-outline {
       background: transparent;
-      border: 2px solid #4f46e5;
+      border: 1.5px solid #0052D4;
+      color: #0052D4;
       padding: 10px 24px;
       border-radius: 40px;
       font-weight: 600;
-      color: #4f46e5;
-      cursor: pointer;
       transition: 0.2s;
+      text-decoration: none;
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
     }
     .btn-outline:hover {
-      background: #4f46e5;
-      color: white;
+      background: #0052D410;
+      border-color: #003d9e;
     }
-
-    /* Hero Section */
-    .hero {
-      padding: 80px 0 80px;
-      background: radial-gradient(circle at 90% 20%, rgba(79,70,229,0.03) 0%, rgba(124,58,237,0.01) 100%);
+    .btn-whatsapp {
+      background: linear-gradient(105deg, #25D366 0%, #128C7E 100%);
+      box-shadow: 0 4px 12px rgba(37, 211, 102, 0.25);
     }
-    .hero-grid {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 50px;
-      align-items: center;
+    .btn-whatsapp:hover {
+      background: linear-gradient(105deg, #20b859 0%, #0e6d62 100%);
+      box-shadow: 0 8px 20px rgba(37, 211, 102, 0.35);
     }
-    .hero-content h1 {
-      font-size: 3.5rem;
-      font-weight: 800;
-      line-height: 1.2;
-      background: linear-gradient(to right, #1e1e2f, #4f46e5);
-      -webkit-background-clip: text;
-      background-clip: text;
-      color: transparent;
-      margin-bottom: 20px;
-    }
-    .hero-content p {
-      font-size: 1.1rem;
-      color: #4a4a62;
-      margin-bottom: 32px;
-      line-height: 1.5;
-    }
-    .hero-buttons {
-      display: flex;
-      gap: 20px;
-      flex-wrap: wrap;
-    }
-    .hero-stats {
-      display: flex;
-      gap: 30px;
-      margin-top: 40px;
-    }
-    .hero-card {
+    .badge-tag {
       background: white;
-      border-radius: 32px;
-      padding: 24px;
-      box-shadow: 0 20px 35px -10px rgba(0,0,0,0.05);
-      text-align: center;
-      border: 1px solid rgba(79,70,229,0.2);
-    }
-    .hero-card i {
-      font-size: 2.2rem;
-      color: #4f46e5;
-      margin-bottom: 12px;
-    }
-    .hero-card h3 {
-      font-size: 1.8rem;
-      font-weight: 800;
-    }
-
-    /* Section Headers */
-    .section-header {
-      text-align: center;
-      margin-bottom: 60px;
-    }
-    .section-header h2 {
-      font-size: 2.5rem;
-      font-weight: 700;
-      margin-bottom: 12px;
-    }
-    .section-header p {
-      color: #5a5a72;
-      max-width: 650px;
-      margin: 0 auto;
-    }
-
-    /* Services Cards */
-    .services {
-      padding: 80px 0;
-      background: #fbfaff;
-    }
-    .cards-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-      gap: 30px;
-    }
-    .service-card {
-      background: white;
-      border-radius: 28px;
-      padding: 32px 24px;
-      transition: all 0.3s ease;
-      box-shadow: 0 12px 25px -12px rgba(0,0,0,0.05);
-      border: 1px solid #ede9fe;
-      text-align: center;
-    }
-    .service-card:hover {
-      transform: translateY(-8px);
-      border-color: #c7d2fe;
-      box-shadow: 0 25px 35px -15px rgba(79,70,229,0.2);
-    }
-    .service-card i {
-      font-size: 2.8rem;
-      color: #4f46e5;
-      margin-bottom: 22px;
-    }
-    .service-card h3 {
-      font-size: 1.5rem;
-      margin-bottom: 12px;
-    }
-    .service-card p {
-      color: #5a5a72;
-      line-height: 1.5;
-    }
-
-    /* About + Stats */
-    .about-stats {
-      padding: 80px 0;
-    }
-    .about-flex {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 50px;
-      align-items: center;
-    }
-    .about-text h3 {
-      font-size: 2rem;
-      font-weight: 700;
-      margin-bottom: 20px;
-    }
-    .about-text p {
-      color: #4a4a62;
-      line-height: 1.6;
-      margin-bottom: 25px;
-    }
-    .stats-container {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 30px;
-      justify-content: space-between;
-    }
-    .stat-item {
-      text-align: center;
-      background: #ffffff;
-      padding: 20px;
-      border-radius: 32px;
-      box-shadow: 0 8px 20px rgba(0,0,0,0.02);
-      flex: 1;
-      border: 1px solid #f0f0ff;
-    }
-    .stat-number {
-      font-size: 2.6rem;
-      font-weight: 800;
-      color: #4f46e5;
-    }
-    .stat-label {
-      font-weight: 500;
-      color: #5a5a72;
-    }
-
-    /* Testimonials Slider */
-    .testimonials {
-      background: linear-gradient(135deg, #f8fafc, #f1f5f9);
-      padding: 80px 0;
-    }
-    .slider-container {
-      max-width: 750px;
-      margin: 0 auto;
-      background: white;
-      border-radius: 48px;
-      padding: 40px 30px;
-      text-align: center;
-      box-shadow: 0 25px 40px -12px rgba(0,0,0,0.1);
-      transition: 0.2s;
-    }
-    .testimonial-content {
-      min-height: 220px;
-      display: flex;
-      flex-direction: column;
-      justify-content: center;
-    }
-    .testimonial-text {
-      font-size: 1.2rem;
-      line-height: 1.5;
-      color: #2d2d42;
-      font-style: italic;
-      margin-bottom: 24px;
-    }
-    .client-name {
-      font-weight: 800;
-      font-size: 1.1rem;
-      color: #1e1e2f;
-    }
-    .client-title {
-      color: #6c6c89;
-      font-size: 0.85rem;
-    }
-    .stars {
-      color: #fbbf24;
-      margin: 15px 0 10px;
-      font-size: 1.2rem;
-    }
-    .slider-controls {
-      display: flex;
-      justify-content: center;
-      gap: 20px;
-      margin-top: 30px;
-    }
-    .slider-btn {
-      background: #ede9fe;
-      border: none;
-      width: 44px;
-      height: 44px;
+      padding: 8px 20px;
       border-radius: 60px;
-      font-size: 1.3rem;
-      cursor: pointer;
-      transition: 0.2s;
-      color: #4f46e5;
+      font-weight: 500;
+      box-shadow: 0 2px 6px rgba(0,0,0,0.03);
+      border: 1px solid #caddf0;
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
     }
-    .slider-btn:hover {
-      background: #4f46e5;
-      color: white;
+    .section-title {
+      font-size: 2.3rem;
+      font-weight: 700;
+      letter-spacing: -0.02em;
+      margin-bottom: 16px;
+      background: linear-gradient(135deg, #14273E, #0052D4);
+      background-clip: text;
+      -webkit-background-clip: text;
+      color: transparent;
+      line-height: 1.3;
     }
-    .dots {
-      display: flex;
-      justify-content: center;
-      gap: 12px;
+    .section-sub {
+      font-size: 1.1rem;
+      color: #4a627a;
+      max-width: 720px;
+      margin-bottom: 48px;
+    }
+    .card-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 32px;
       margin-top: 20px;
     }
-    .dot {
-      width: 10px;
-      height: 10px;
-      background: #cbd5e1;
-      border-radius: 10px;
-      cursor: pointer;
-      transition: 0.2s;
-    }
-    .dot.active {
-      width: 28px;
-      background: #4f46e5;
-    }
-
-    /* Contact Section */
-    .contact {
-      padding: 80px 0;
-    }
-    .contact-grid {
-      display: grid;
-      grid-template-columns: 1fr 1.2fr;
-      gap: 50px;
-      background: #ffffff;
-      border-radius: 40px;
-      box-shadow: 0 20px 35px -12px rgba(0,0,0,0.05);
-      padding: 40px;
-    }
-    .contact-info h3 {
-      font-size: 1.8rem;
+    .feature-icon {
+      font-size: 2.5rem;
+      color: #0052D4;
       margin-bottom: 20px;
+      display: inline-block;
     }
-    .contact-info p {
-      margin-bottom: 30px;
-      color: #5a5a72;
-    }
-    .contact-detail {
+    .metrics-flex {
       display: flex;
-      align-items: center;
-      gap: 15px;
-      margin-bottom: 25px;
+      flex-wrap: wrap;
+      gap: 32px;
+      justify-content: space-between;
+      background: #ffffffdd;
+      border-radius: 40px;
+      padding: 32px 28px;
+      backdrop-filter: blur(4px);
+      border: 1px solid #eef2ff;
     }
-    .contact-detail i {
-      width: 45px;
-      height: 45px;
-      background: #ede9fe;
-      border-radius: 60px;
+    .metric-item {
+      flex: 1;
+      text-align: center;
+    }
+    .counter-num {
+      font-size: 3rem;
+      font-weight: 800;
+      color: #0052D4;
+    }
+    .whatsapp-float {
+      position: fixed;
+      bottom: 30px;
+      right: 30px;
+      background-color: #25D366;
+      color: white;
+      width: 60px;
+      height: 60px;
+      border-radius: 50%;
       display: flex;
       align-items: center;
       justify-content: center;
-      color: #4f46e5;
-      font-size: 1.2rem;
+      font-size: 2rem;
+      box-shadow: 0 4px 15px rgba(0,0,0,0.2);
+      transition: all 0.3s ease;
+      z-index: 99;
+      text-decoration: none;
     }
-    .form-group {
-      margin-bottom: 20px;
+    .whatsapp-float:hover {
+      transform: scale(1.1);
+      background-color: #20b359;
     }
-    .form-group input, .form-group textarea {
+    footer {
+      background: #0A1927;
+      color: #cbd5e1;
+      padding: 48px 0 24px;
+    }
+    .contact-form input, .contact-form textarea {
       width: 100%;
       padding: 14px 18px;
       border-radius: 28px;
-      border: 1px solid #e2e8f0;
+      border: 1px solid #cfdfed;
+      background: white;
       font-family: inherit;
+      margin-bottom: 16px;
+      transition: 0.2s;
+    }
+    .contact-form input:focus, .contact-form textarea:focus {
+      outline: none;
+      border-color: #0052D4;
+      box-shadow: 0 0 0 3px rgba(0,82,212,0.1);
+    }
+    .feedback-success { color: #2b7a3e; background: #e9f7ef; padding: 10px 16px; border-radius: 40px; font-size: 0.9rem; display: inline-block; width: 100%; text-align: center; }
+    .feedback-error { color: #d9534f; background: #fdf7f7; padding: 10px 16px; border-radius: 40px; font-size: 0.9rem; display: inline-block; width: 100%; text-align: center; }
+    .spinner {
+      display: inline-block;
+      width: 18px;
+      height: 18px;
+      border: 2px solid rgba(255,255,255,0.3);
+      border-radius: 50%;
+      border-top-color: white;
+      animation: spin 0.6s linear infinite;
+      margin-right: 8px;
+    }
+    @keyframes spin { to { transform: rotate(360deg); } }
+    .fade-up {
+      opacity: 0;
+      transform: translateY(28px);
+      transition: opacity 0.7s cubic-bezier(0.2, 0.9, 0.4, 1), transform 0.7s ease;
+    }
+    .fade-up.visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+    /* desktop navigation */
+    nav {
+      background: rgba(255,255,255,0.96);
+      backdrop-filter: blur(12px);
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      border-bottom: 1px solid #eef2f6;
+    }
+    .nav-container {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 18px 24px;
+      max-width: 1400px;
+      margin: 0 auto;
+    }
+    .logo-text {
+      background: linear-gradient(135deg, #0052D4, #00A6FF);
+      background-clip: text;
+      -webkit-background-clip: text;
+      color: transparent;
+      font-size: 1.7rem;
+      font-weight: 800;
+      letter-spacing: -0.3px;
+    }
+    .nav-links {
+      display: flex;
+      gap: 32px;
+      align-items: center;
+      flex-wrap: wrap;
+    }
+    .nav-links a {
+      text-decoration: none;
+      font-weight: 500;
+      color: #1e2f3f;
       transition: 0.2s;
       font-size: 0.95rem;
     }
-    .form-group input:focus, .form-group textarea:focus {
-      outline: none;
-      border-color: #4f46e5;
-      box-shadow: 0 0 0 3px rgba(79,70,229,0.1);
+    .nav-links a:hover { color: #0052D4; }
+    .menu-btn {
+      display: none;
+      font-size: 1.6rem;
+      background: none;
+      border: none;
+      cursor: pointer;
+      color: #1A2C3E;
     }
-    .submit-feedback {
-      margin-top: 15px;
-      font-size: 0.9rem;
-      font-weight: 500;
+    /* ----- MOBILE VERSION OVERRIDES (will be forced via body class .mobile-version) ----- */
+    body.mobile-version .nav-links {
+      display: none;
+      flex-direction: column;
+      background: white;
+      position: absolute;
+      top: 70px;
+      left: 0;
+      right: 0;
+      padding: 30px;
+      gap: 24px;
+      box-shadow: 0 20px 30px rgba(0,0,0,0.05);
+      border-radius: 0 0 28px 28px;
     }
-    footer {
-      background: #0f0f1a;
-      color: #cbd5e1;
-      padding: 40px 0;
-      text-align: center;
-    }
-    .social-icons {
+    body.mobile-version .nav-links.active {
       display: flex;
-      justify-content: center;
-      gap: 25px;
-      margin: 20px 0;
     }
-    .social-icons a {
-      color: #cbd5e1;
+    body.mobile-version .menu-btn {
+      display: block;
+    }
+    body.mobile-version .hero-grid {
+      flex-direction: column;
+    }
+    body.mobile-version .section-title {
+      font-size: 1.9rem;
+    }
+    body.mobile-version .logo-text {
       font-size: 1.3rem;
-      transition: 0.2s;
     }
-    .social-icons a:hover {
-      color: #4f46e5;
+    body.mobile-version .whatsapp-float {
+      width: 50px;
+      height: 50px;
+      font-size: 1.6rem;
+      bottom: 20px;
+      right: 20px;
     }
-
-    @media (max-width: 900px) {
-      .hero-grid, .about-flex, .contact-grid {
-        grid-template-columns: 1fr;
-        gap: 40px;
-      }
-      .navbar {
-        flex-wrap: wrap;
-      }
-      .nav-links {
+    body.mobile-version .container {
+      padding: 0 20px;
+    }
+    body.mobile-version .card-grid {
+      gap: 24px;
+    }
+    body.mobile-version .metrics-flex {
+      flex-direction: column;
+      gap: 24px;
+    }
+    /* ensure all responsive sections adapt */
+    .hero-grid {
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      gap: 40px;
+    }
+    .hero-content {
+      flex: 1;
+    }
+    @media (max-width: 880px) {
+      /* default responsive fallback - but our device detection forces class, still works */
+      body:not(.desktop-version) .nav-links {
         display: none;
-        width: 100%;
-        flex-direction: column;
-        background: white;
-        padding: 28px 0;
-        gap: 1.5rem;
-        margin-top: 15px;
-        border-top: 1px solid #ede9fe;
       }
-      .nav-links.active {
-        display: flex;
-      }
-      .hamburger {
+      body:not(.desktop-version) .menu-btn {
         display: block;
       }
-      .hero-content h1 {
-        font-size: 2.4rem;
-      }
-      .section-header h2 {
-        font-size: 2rem;
-      }
-      .container {
-        padding: 0 24px;
-      }
-    }
-    @media (max-width: 550px) {
-      .stats-container {
+      body:not(.desktop-version) .hero-grid {
         flex-direction: column;
       }
     }
   </style>
 </head>
 <body>
-<header>
-  <div class="container">
-    <div class="navbar">
-      <div class="logo">Digital <span>It Move</span></div>
-      <div class="hamburger" id="hamburgerIcon"><i class="fas fa-bars"></i></div>
-      <ul class="nav-links" id="navLinks">
-        <li><a href="#home" class="nav-link">Home</a></li>
-        <li><a href="#services" class="nav-link">Services</a></li>
-        <li><a href="#about" class="nav-link">About</a></li>
-        <li><a href="#testimonials" class="nav-link">Testimonials</a></li>
-        <li><a href="#contact" class="nav-link">Contact</a></li>
-      </ul>
+<!-- Floating WhatsApp Button -->
+<a href="https://wa.me/61410237261?text=Hello%20Digital%20IT%20Move%2C%20I%27m%20interested%20in%20your%20data%2C%20cloud%20and%20digital%20services.%20Can%20we%20chat%3F" 
+   class="whatsapp-float" target="_blank" rel="noopener noreferrer">
+  <i class="fab fa-whatsapp"></i>
+</a>
+
+<nav>
+  <div class="nav-container">
+    <div class="logo">
+      <span class="logo-text">Digital IT Move</span>
+    </div>
+    <button class="menu-btn" id="menuBtn" aria-label="Menu"><i class="fas fa-bars"></i></button>
+    <div class="nav-links" id="navLinks">
+      <a href="#home">Home</a>
+      <a href="#services">Services</a>
+      <a href="#data-engineering">Data & Analytics</a>
+      <a href="#automation">Automation</a>
+      <a href="#cloud">Cloud</a>
+      <a href="#marketing">Marketing</a>
+      <a href="#training">Training</a>
+      <a href="#clients">Clients</a>
+      <a href="#contact">Contact</a>
     </div>
   </div>
-</header>
+</nav>
 
 <main>
   <!-- Hero Section -->
-  <section id="home" class="hero">
+  <section id="home" class="hero" style="padding: 80px 0 70px; background: linear-gradient(145deg, #ffffff 0%, #f5f9ff 100%);">
     <div class="container hero-grid">
       <div class="hero-content">
-        <h1>Move Your Business <br> With Digital Innovation</h1>
-        <p>We craft data-driven strategies, creative campaigns, and result-oriented marketing to skyrocket your brand online. Welcome to Digital It Move – where your growth story begins.</p>
-        <div class="hero-buttons">
-          <a href="#contact" class="btn-primary">Get a free audit <i class="fas fa-arrow-right"></i></a>
-          <a href="#services" class="btn-outline">Explore services</a>
-        </div>
-        <div class="hero-stats">
-          <div class="hero-card"><i class="fas fa-chart-line"></i><h3>150+</h3><p>Happy Clients</p></div>
-          <div class="hero-card"><i class="fas fa-rocket"></i><h3>480+</h3><p>Projects Done</p></div>
+        <span class="hero-badge" style="background: #e9f0ff; color:#0052D4; border-radius:60px; padding:6px 16px; font-size:0.85rem; font-weight:600; display:inline-block; margin-bottom:20px;"><i class="fas fa-chart-line"></i> Australian data & cloud specialists</span>
+        <h1 style="font-size: 3.2rem; font-weight: 800; line-height: 1.2; margin-bottom: 20px;">Modernize with <span style="color:#0052D4;">Data, Cloud & Digital</span> Solutions</h1>
+        <p style="font-size: 1.2rem; color: #2c475e; margin-bottom: 32px;">End-to-end digital, data, and IT services designed for Australian businesses. We combine cloud technologies with practical use cases to deliver efficiency, smarter decisions, and scalable growth.</p>
+        <div>
+          <a href="#contact" class="btn-primary"><i class="fas fa-rocket"></i> Start your project</a>
+          <a href="https://wa.me/61410237261?text=Hello%20Digital%20IT%20Move%2C%20I%27d%20like%20to%20discuss%20services" class="btn-primary btn-whatsapp" style="margin-left: 16px; background: linear-gradient(105deg, #25D366, #128C7E);" target="_blank"><i class="fab fa-whatsapp"></i> Chat on WhatsApp</a>
         </div>
       </div>
-      <div class="hero-card" style="background: linear-gradient(145deg, white, #faf5ff);">
-        <i class="fas fa-bullhorn" style="font-size: 3rem;"></i>
-        <h3>Digital It Move</h3>
-        <p>Your partner in SEO, Social Media, PPC and growth hacking. Let's drive results together.</p>
-        <i class="fas fa-chart-simple" style="margin-top: 20px; display: inline-block;"></i>
+      <div style="flex:1; text-align: center;">
+        <i class="fas fa-cloud-upload-alt" style="font-size: 11rem; color: #cbdffc;"></i>
       </div>
     </div>
   </section>
 
-  <!-- Services Section -->
-  <section id="services" class="services">
+  <!-- Core Value Props -->
+  <div class="container">
+    <div class="card-grid" style="margin-top: -40px; margin-bottom: 20px;">
+      <div class="glass-card" style="padding: 32px;"><i class="fas fa-database feature-icon"></i><h3>Data Engineering</h3><p>Scalable pipelines, warehouses & lakes using Azure Data Factory, Databricks & SQL. Actionable insights, always available.</p></div>
+      <div class="glass-card" style="padding: 32px;"><i class="fas fa-robot feature-icon"></i><h3>Process Automation</h3><p>Eliminate manual work with Power Automate & Logic Apps. Automated reports, workflows and system integrations.</p></div>
+      <div class="glass-card" style="padding: 32px;"><i class="fas fa-chart-pie feature-icon"></i><h3>Analytics & BI</h3><p>Power BI dashboards to track KPIs, monitor performance, and drive real-time decisions tailored to your goals.</p></div>
+    </div>
+  </div>
+
+  <!-- Trusted Section -->
+  <section style="padding: 20px 0 40px;">
     <div class="container">
-      <div class="section-header">
-        <h2>What We Deliver</h2>
-        <p>Cutting-edge digital marketing solutions tailored to elevate your brand presence.</p>
-      </div>
-      <div class="cards-grid">
-        <div class="service-card"><i class="fas fa-magnifying-glass-chart"></i><h3>SEO Strategy</h3><p>Rank higher on search engines with organic growth tactics & technical audits.</p></div>
-        <div class="service-card"><i class="fab fa-facebook-f"></i><h3>Social Media</h3><p>Engaging content, community management & paid social campaigns.</p></div>
-        <div class="service-card"><i class="fas fa-ad"></i><h3>PPC Advertising</h3><p>Targeted google & social ads that maximize ROI and reach.</p></div>
-        <div class="service-card"><i class="fas fa-envelope-open-text"></i><h3>Email Marketing</h3><p>Automated campaigns, newsletters & personalized drips.</p></div>
-        <div class="service-card"><i class="fas fa-chart-simple"></i><h3>Analytics & CRO</h3><p>Data-driven decisions & conversion rate optimization.</p></div>
-        <div class="service-card"><i class="fas fa-code"></i><h3>Web Development</h3><p>Stunning, high-performance websites optimized for conversions.</p></div>
+      <div style="background: #eef3fc; border-radius: 48px; padding: 32px 24px; text-align: center;">
+        <h3 class="section-title" style="font-size:1.8rem;">Trusted by Australian Tech Leaders</h3>
+        <div style="display: flex; flex-wrap: wrap; justify-content: center; gap: 28px; margin-top: 24px;">
+          <span class="badge-tag"><i class="fas fa-server"></i> Managed Service Providers</span>
+          <span class="badge-tag"><i class="fas fa-cloud"></i> SaaS & Software Vendors</span>
+          <span class="badge-tag"><i class="fas fa-lock"></i> Cybersecurity & Compliance</span>
+          <span class="badge-tag"><i class="fas fa-network-wired"></i> Cloud Migration & Infrastructure</span>
+        </div>
+        <p style="margin-top: 28px; color: #2b4b6f;">Tailored campaigns that engage CTOs, IT managers, developers — ensuring your message reaches the right audience with impact.</p>
       </div>
     </div>
   </section>
 
-  <!-- About + Counters (Interactive) -->
-  <section id="about" class="about-stats">
-    <div class="container about-flex">
-      <div class="about-text">
-        <h3>Why brands choose <span style="color:#4f46e5;">Digital It Move</span></h3>
-        <p>We blend creativity with analytical precision. Our mission is to deliver measurable growth and turn visitors into loyal customers. With a team of experts in SEO, ads, content, and design, we have transformed over 150 businesses worldwide.</p>
-        <p>Your success is our fuel — we move with agility and transparency.</p>
-        <a href="#contact" class="btn-primary" style="margin-top: 15px; display: inline-block;">Start your journey →</a>
-      </div>
-      <div class="stats-container" id="statsSection">
-        <div class="stat-item"><div class="stat-number" data-target="328" data-counted="false">0</div><div class="stat-label">Projects Completed</div></div>
-        <div class="stat-item"><div class="stat-number" data-target="158" data-counted="false">0</div><div class="stat-label">Happy Clients</div></div>
-        <div class="stat-item"><div class="stat-number" data-target="12" data-counted="false">0</div><div class="stat-label">Industry Awards</div></div>
-        <div class="stat-item"><div class="stat-number" data-target="9" data-counted="false">0</div><div class="stat-label">Years Experience</div></div>
-      </div>
-    </div>
-  </section>
-
-  <!-- Testimonials Slider (Fully Interactive) -->
-  <section id="testimonials" class="testimonials">
+  <!-- Comprehensive Services Section -->
+  <section id="services">
     <div class="container">
-      <div class="section-header">
-        <h2>Client Stories</h2>
-        <p>Real feedback from partners who moved forward with us.</p>
+      <h2 class="section-title">Our Services: Data, Cloud & Digital Integration</h2>
+      <p class="section-sub">We provide end-to-end digital, data, and IT solutions that help businesses operate efficiently, make smarter decisions, and scale with confidence.</p>
+      <div id="data-engineering" style="margin-bottom: 60px;">
+        <div style="display: flex; flex-wrap: wrap; gap: 32px; align-items: center;">
+          <div style="flex: 1; min-width: 280px;"><i class="fas fa-database feature-icon" style="font-size: 3rem;"></i><h3 style="font-size: 2rem; margin-bottom: 12px;">Data Engineering & Analytics</h3><p style="color: #2c475e; margin-bottom: 20px;">Transform raw data into actionable insights with scalable systems. We build automated data pipelines, integrate multiple sources, and develop robust data warehouses and data lakes.</p><p><strong>Tools:</strong> Azure Data Factory, Databricks, SQL-based systems</p><p><strong>BI & Dashboards:</strong> Interactive Power BI reports for real-time KPI tracking.</p></div>
+          <div style="flex: 1; text-align: center;"><i class="fas fa-chart-bar" style="font-size: 10rem; color: #d4e2fc;"></i></div>
+        </div>
       </div>
-      <div class="slider-container">
-        <div class="testimonial-content" id="testimonialContent">
-          <div class="stars">★★★★★</div>
-          <p class="testimonial-text" id="testimonialText">"Digital It Move completely revamped our SEO and social presence. Our organic traffic grew 210% in 4 months! Highly recommended team."</p>
-          <div class="client-name" id="clientName">Emma Richardson</div>
-          <div class="client-title" id="clientTitle">CMO, Vantage Tech</div>
+      <div id="automation" style="margin-bottom: 60px;">
+        <div style="display: flex; flex-wrap: wrap; gap: 32px; align-items: center;">
+          <div style="flex: 1; text-align: center;"><i class="fas fa-cogs" style="font-size: 10rem; color: #d4e2fc;"></i></div>
+          <div style="flex: 1; min-width: 280px;"><i class="fas fa-robot feature-icon" style="font-size: 3rem;"></i><h3 style="font-size: 2rem; margin-bottom: 12px;">Business Process Automation</h3><p style="color: #2c475e; margin-bottom: 20px;">Automate repetitive tasks using Power Automate and Azure Logic Apps, reducing errors and improving efficiency.</p></div>
         </div>
-        <div class="slider-controls">
-          <button class="slider-btn" id="prevSlide"><i class="fas fa-chevron-left"></i></button>
-          <button class="slider-btn" id="nextSlide"><i class="fas fa-chevron-right"></i></button>
+      </div>
+      <div id="cloud" style="margin-bottom: 60px;">
+        <div style="display: flex; flex-wrap: wrap; gap: 32px; align-items: center;">
+          <div style="flex: 1; min-width: 280px;"><i class="fas fa-cloud-upload-alt feature-icon" style="font-size: 3rem;"></i><h3 style="font-size: 2rem; margin-bottom: 12px;">Cloud Solutions & Migration</h3><p style="color: #2c475e; margin-bottom: 20px;">Modernize IT infrastructure with secure, scalable cloud architectures. Smooth transitions to Microsoft Azure.</p></div>
+          <div style="flex: 1; text-align: center;"><i class="fas fa-server" style="font-size: 10rem; color: #d4e2fc;"></i></div>
         </div>
-        <div class="dots" id="dotsContainer"></div>
       </div>
     </div>
   </section>
 
-  <!-- Contact + interactive form -->
-  <section id="contact" class="contact">
-    <div class="container contact-grid">
-      <div class="contact-info">
-        <h3>Let's Talk Growth</h3>
-        <p>Ready to scale your digital footprint? Drop us a message, and our experts will get back within 24h.</p>
-        <div class="contact-detail"><i class="fas fa-map-marker-alt"></i><span>123 Innovation Hub, NY 10001</span></div>
-        <div class="contact-detail"><i class="fas fa-phone-alt"></i><span>+1 (800) 456-7890</span></div>
-        <div class="contact-detail"><i class="fas fa-envelope"></i><span>hello@digitalitmove.com</span></div>
+  <!-- Digital Marketing -->
+  <section id="marketing" style="background: #f6fafd;">
+    <div class="container">
+      <h2 class="section-title">Digital Marketing & Analytics</h2>
+      <p class="section-sub">Performance-focused marketing combined with data analytics. Every campaign measured, analyzed, and refined.</p>
+      <div class="card-grid">
+        <div class="glass-card" style="padding: 28px;"><i class="fas fa-search feature-icon"></i><h3>SEO for Tech Audiences</h3><p>High-intent keywords reaching decision-makers across Australia.</p></div>
+        <div class="glass-card" style="padding: 28px;"><i class="fas fa-ad feature-icon"></i><h3>Paid Advertising</h3><p>Smart bidding on Google, LinkedIn & industry channels.</p></div>
+        <div class="glass-card" style="padding: 28px;"><i class="fas fa-chart-line feature-icon"></i><h3>Campaign Analytics</h3><p>Complete visibility with performance dashboards.</p></div>
+        <div class="glass-card" style="padding: 28px;"><i class="fas fa-bullseye feature-icon"></i><h3>Data-Driven Strategy</h3><p>Every marketing dollar measured for impact.</p></div>
       </div>
-      <div>
-        <form id="contactForm">
-          <div class="form-group"><input type="text" id="name" placeholder="Full name" required></div>
-          <div class="form-group"><input type="email" id="email" placeholder="Email address" required></div>
-          <div class="form-group"><textarea rows="4" id="message" placeholder="Tell us about your goals..." required></textarea></div>
-          <button type="submit" class="btn-primary" style="width:100%;">Send Message <i class="fas fa-paper-plane"></i></button>
-          <div id="formFeedback" class="submit-feedback"></div>
-        </form>
+    </div>
+  </section>
+
+  <!-- Training -->
+  <section id="training">
+    <div class="container">
+      <div style="display: flex; flex-wrap: wrap; gap: 40px; align-items: center;">
+        <div style="flex: 1; min-width: 280px;"><h2 class="section-title">Training & Consulting</h2><p style="font-size: 1.2rem; color: #2c475e; margin-bottom: 24px;">Empower your team with practical, hands-on sessions on data and cloud technologies.</p><div style="display: flex; flex-wrap: wrap; gap: 16px;"><span class="badge-tag"><i class="fas fa-database"></i> SQL & Data Analytics</span><span class="badge-tag"><i class="fas fa-cloud"></i> Cloud Technologies</span><span class="badge-tag"><i class="fas fa-chart-pie"></i> BI Tools</span></div><a href="#contact" class="btn-primary" style="margin-top: 20px;"><i class="fas fa-chalkboard-teacher"></i> Enquire about training</a></div>
+        <div style="flex: 1; text-align: center;"><i class="fas fa-users-cog" style="font-size: 12rem; color: #cbdffc;"></i></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- IT Support & Metrics -->
+  <section id="it-services" style="background: #ffffff;">
+    <div class="container">
+      <h2 class="section-title">IT Support & Managed Services</h2>
+      <div class="card-grid">
+        <div class="glass-card"><div style="padding: 24px;"><i class="fas fa-headset feature-icon"></i><h3>IT Helpdesk Support</h3><p>L1/L2/L3 support, ticket resolution, remote assistance.</p></div></div>
+        <div class="glass-card"><div style="padding: 24px;"><i class="fas fa-wifi feature-icon"></i><h3>Network Support</h3><p>LAN/WAN/Wi-Fi, VPN, monitoring & optimisation.</p></div></div>
+        <div class="glass-card"><div style="padding: 24px;"><i class="fas fa-shield-alt feature-icon"></i><h3>Security Support</h3><p>Endpoint protection, patch management, compliance.</p></div></div>
+      </div>
+      <div class="metrics-flex" style="margin-top: 40px;">
+        <div class="metric-item"><span class="counter-num" data-target="99">0</span>%<h4>SLA Compliance</h4></div>
+        <div class="metric-item"><span class="counter-num" data-target="87">0</span>%<h4>First-Call Resolution</h4></div>
+        <div class="metric-item"><span class="counter-num" data-target="99.99">0</span>%<h4>Network Uptime</h4></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Clients -->
+  <section id="clients">
+    <div class="container">
+      <h2 class="section-title">Trusted by Australian Technology Leaders</h2>
+      <div class="glass-card" style="padding: 36px;">
+        <h3><i class="fas fa-shield-alt"></i> Case Study: Cybersecurity Services Provider</h3>
+        <p>Result: 40% faster resolution, enhanced security posture.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Offices (Australia, India, UAE) -->
+  <section style="background: #F9FCFE;">
+    <div class="container">
+      <div class="glass-card" style="text-align: center; padding: 32px; margin-bottom: 30px;">
+        <i class="fas fa-map-marker-alt" style="font-size: 2rem; color:#0052D4;"></i>
+        <h3>Australian Office</h3>
+        <p>C/o Deepak Paraye, 1/7 Dunstan Street, Clayton VIC 3168, Melbourne</p>
+        <p><i class="fas fa-envelope"></i> deepak.digiaus03@gmail.com | <i class="fas fa-phone-alt"></i> +61 0 410 237 261</p>
+        <div style="margin-top: 20px;"><a href="https://wa.me/61410237261?text=Hello%20Digital%20IT%20Move" target="_blank" class="btn-primary btn-whatsapp" style="background: linear-gradient(105deg, #25D366, #128C7E); display: inline-flex;"><i class="fab fa-whatsapp"></i> Message us on WhatsApp</a></div>
+      </div>
+      <div class="glass-card" style="text-align: center; padding: 32px; margin-bottom: 30px;">
+        <i class="fas fa-map-marker-alt" style="font-size: 2rem; color:#0052D4;"></i>
+        <h3>Indian Office</h3>
+        <p>C/o Avi Patmase, Plot No. 121 B Shri Purna Layout Dabha Nagpur 440023, Nagpur, Maharashtra, India</p>
+        <p><i class="fas fa-envelope"></i> avi.digiaus03@gmail.com | <i class="fas fa-phone-alt"></i> +91 920 163 7371</p>
+        <div style="margin-top: 20px;"><a href="https://wa.me/919201637371?text=Hello%20Digital%20IT%20Move" target="_blank" class="btn-primary btn-whatsapp" style="background: linear-gradient(105deg, #25D366, #128C7E); display: inline-flex;"><i class="fab fa-whatsapp"></i> Message us on WhatsApp</a></div>
+      </div>
+      <div class="glass-card" style="text-align: center; padding: 32px;">
+        <i class="fas fa-map-marker-alt" style="font-size: 2rem; color:#0052D4;"></i>
+        <h3>U.A.E. Office</h3>
+        <p>C/o Sneha Kohale, D 102 China Cluster International City Dubai, United Arab Emirates (UAE)</p>
+        <p><i class="fas fa-envelope"></i> sneha.digiaus03@gmail.com | <i class="fas fa-phone-alt"></i> +91 898 315 3097</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Contact Form -->
+  <section id="contact">
+    <div class="container">
+      <div style="display: flex; flex-wrap: wrap; gap: 48px;">
+        <div style="flex:1"><h2 class="section-title">Let’s Transform Your Business</h2><p>Get a tailored strategy for data, cloud, automation or digital marketing.</p><div style="margin-top: 24px;"><a href="https://wa.me/61410237261?text=I%27m%20interested%20in%20Digital%20IT%20Move%20services" target="_blank" class="btn-outline" style="border-color:#25D366; color:#25D366;"><i class="fab fa-whatsapp"></i> WhatsApp +61 410 237 261</a></div></div>
+        <div style="flex:1"><form id="contactForm" class="contact-form"><input type="text" placeholder="Full name" id="nameField" required><input type="email" placeholder="Business email" id="emailField" required><textarea rows="3" placeholder="Tell us about your data, cloud or IT needs..." id="msgField"></textarea><button type="submit" id="sendBtn" class="btn-primary" style="width:100%;"><i class="fas fa-paper-plane"></i> Send enquiry & save to Word</button><p id="formFeedback" style="margin-top: 16px; font-size:0.9rem; text-align:center;"></p></form></div>
       </div>
     </div>
   </section>
 </main>
 
 <footer>
-  <div class="container">
-    <div class="social-icons">
-      <a href="#"><i class="fab fa-facebook-f"></i></a>
-      <a href="#"><i class="fab fa-twitter"></i></a>
-      <a href="#"><i class="fab fa-linkedin-in"></i></a>
-      <a href="#"><i class="fab fa-instagram"></i></a>
+  <div class="container" style="text-align: center;">
+    <p>© 2025 Digital IT Move – Bridging data, cloud & strategic growth across Australia.</p>
+    <div style="display: flex; justify-content: center; gap: 28px; font-size: 1.4rem; margin-top: 16px;">
+      <i class="fab fa-linkedin"></i> <i class="fab fa-twitter"></i> <i class="fab fa-facebook"></i>
+      <a href="https://wa.me/61410237261?text=Hi%20Digital%20IT%20Move" style="color:#cbd5e1;" target="_blank"><i class="fab fa-whatsapp"></i></a>
     </div>
-    <p>© 2025 Digital It Move — Future-ready digital marketing. All rights reserved.</p>
+    <div style="margin-top: 20px; font-size: 0.85rem;"><i class="fab fa-whatsapp"></i> WhatsApp: +61 410 237 261</div>
   </div>
 </footer>
 
 <script>
-  // -------------------- Mobile Nav Toggle --------------------
-  const hamburger = document.getElementById('hamburgerIcon');
-  const navLinks = document.getElementById('navLinks');
-  hamburger.addEventListener('click', () => {
-    navLinks.classList.toggle('active');
-  });
-  document.querySelectorAll('.nav-link').forEach(link => {
-    link.addEventListener('click', () => {
-      navLinks.classList.remove('active');
-    });
-  });
-
-  // Smooth scroll for anchor links
-  document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-    anchor.addEventListener('click', function(e) {
-      const href = this.getAttribute('href');
-      if(href === "#" || href === "") return;
-      const target = document.querySelector(href);
-      if(target) {
-        e.preventDefault();
-        target.scrollIntoView({ behavior: 'smooth', block: 'start' });
-      }
-    });
-  });
-
-  // -------------------- Interactive Counters (Intersection Observer) --------------------
-  const counters = document.querySelectorAll('.stat-number');
-  let countedFlags = new Array(counters.length).fill(false);
-  
-  function animateCounter(counterEl, targetVal) {
-    let current = 0;
-    const increment = targetVal / 55;
-    const updateCounter = () => {
-      current += increment;
-      if(current < targetVal) {
-        counterEl.innerText = Math.floor(current);
-        requestAnimationFrame(updateCounter);
+  (function() {
+    // ---------- DEVICE DETECTION: desktop vs mobile (laptop, desktop -> desktop version ; mobile devices -> mobile version) ----------
+    function detectAndApplyDeviceVersion() {
+      const isMobile = /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini|Mobile|Tablet|iPad|Android.*Mobile/i.test(navigator.userAgent) 
+                       || (window.innerWidth <= 880); // also fallback for width
+      const body = document.body;
+      // remove any previous classes
+      body.classList.remove('mobile-version', 'desktop-version');
+      if (isMobile) {
+        body.classList.add('mobile-version');
+        // ensure mobile specific menu functionality
+        console.log('Mobile version activated');
       } else {
-        counterEl.innerText = targetVal;
+        body.classList.add('desktop-version');
+        console.log('Desktop version activated');
+        // on desktop ensure nav links are always visible via inline style reset but keep desktop layout
+        const navLinkDiv = document.getElementById('navLinks');
+        if(navLinkDiv && window.innerWidth > 880) {
+          navLinkDiv.style.display = 'flex';
+        }
       }
-    };
-    updateCounter();
-  }
-
-  const statsObserver = new IntersectionObserver((entries) => {
-    entries.forEach(entry => {
-      if(entry.isIntersecting) {
-        const statContainer = entry.target;
-        const numbers = statContainer.querySelectorAll('.stat-number');
-        numbers.forEach((num, idx) => {
-          if (!countedFlags[idx]) {
-            const target = parseInt(num.getAttribute('data-target'));
-            if (!isNaN(target)) {
-              animateCounter(num, target);
-              countedFlags[idx] = true;
-            }
-          }
-        });
-        statsObserver.unobserve(statContainer);
-      }
-    });
-  }, { threshold: 0.4 });
-  
-  const statsSection = document.getElementById('statsSection');
-  if(statsSection) statsObserver.observe(statsSection);
-
-  // -------------------- Testimonials Slider (Dynamic & Interactive) --------------------
-  const testimonialsData = [
-    { text: "Digital It Move completely revamped our SEO and social presence. Our organic traffic grew 210% in 4 months! Highly recommended team.", name: "Emma Richardson", title: "CMO, Vantage Tech", stars: 5 },
-    { text: "Professional, data-driven, and creative. The PPC campaigns boosted our ROI by 150%. We’ve seen incredible growth. Thank you Digital It Move!", name: "Marcus Chen", title: "Founder, NexaStyle", stars: 5 },
-    { text: "Working with them is a game-changer. From website optimization to email automation, everything is seamless. 10/10!", name: "Sophia Laurent", title: "Marketing Director, Bloom Labs", stars: 5 },
-    { text: "Their strategic insights and execution helped us dominate local search. The best investment we've made this year!", name: "James Okafor", title: "CEO, Swift Logistics", stars: 5 }
-  ];
-  let currentTestimonial = 0;
-  const testimonialText = document.getElementById('testimonialText');
-  const clientName = document.getElementById('clientName');
-  const clientTitle = document.getElementById('clientTitle');
-  const starsDiv = document.querySelector('#testimonialContent .stars');
-  const prevBtn = document.getElementById('prevSlide');
-  const nextBtn = document.getElementById('nextSlide');
-  const dotsContainer = document.getElementById('dotsContainer');
-
-  function updateTestimonial(index) {
-    const t = testimonialsData[index];
-    testimonialText.innerText = `"${t.text}"`;
-    clientName.innerText = t.name;
-    clientTitle.innerText = t.title;
-    const starCount = t.stars;
-    starsDiv.innerHTML = '★'.repeat(starCount) + '☆'.repeat(5-starCount);
-    // update active dot
-    const allDots = document.querySelectorAll('.dot');
-    allDots.forEach((dot, i) => {
-      if(i === index) dot.classList.add('active');
-      else dot.classList.remove('active');
-    });
-  }
-
-  function createDots() {
-    dotsContainer.innerHTML = '';
-    testimonialsData.forEach((_, idx) => {
-      const dot = document.createElement('div');
-      dot.classList.add('dot');
-      if(idx === currentTestimonial) dot.classList.add('active');
-      dot.addEventListener('click', () => {
-        currentTestimonial = idx;
-        updateTestimonial(currentTestimonial);
+      // if width changes (resize) sync
+      window.addEventListener('resize', function() {
+        const nowMobile = window.innerWidth <= 880;
+        if(nowMobile && !body.classList.contains('mobile-version')) {
+          body.classList.remove('desktop-version');
+          body.classList.add('mobile-version');
+        } else if(!nowMobile && !body.classList.contains('desktop-version')) {
+          body.classList.remove('mobile-version');
+          body.classList.add('desktop-version');
+          const navLinkDiv2 = document.getElementById('navLinks');
+          if(navLinkDiv2) navLinkDiv2.style.display = 'flex';
+        }
+        if(window.innerWidth > 880) {
+          const mobileNav = document.getElementById('navLinks');
+          if(mobileNav) mobileNav.classList.remove('active');
+        }
       });
-      dotsContainer.appendChild(dot);
-    });
-  }
-  prevBtn.addEventListener('click', () => {
-    currentTestimonial = (currentTestimonial - 1 + testimonialsData.length) % testimonialsData.length;
-    updateTestimonial(currentTestimonial);
-  });
-  nextBtn.addEventListener('click', () => {
-    currentTestimonial = (currentTestimonial + 1) % testimonialsData.length;
-    updateTestimonial(currentTestimonial);
-  });
-  createDots();
-  updateTestimonial(0);
+    }
+    detectAndApplyDeviceVersion();
 
-  // -------------------- Contact Form Interactive Validation & Feedback --------------------
-  const contactForm = document.getElementById('contactForm');
-  const feedbackDiv = document.getElementById('formFeedback');
-  
-  contactForm.addEventListener('submit', (e) => {
-    e.preventDefault();
-    const name = document.getElementById('name').value.trim();
-    const email = document.getElementById('email').value.trim();
-    const message = document.getElementById('message').value.trim();
+    // Mobile menu toggle
+    const menuBtn = document.getElementById('menuBtn');
+    const navLinks = document.getElementById('navLinks');
+    if(menuBtn) {
+      menuBtn.addEventListener('click', (e) => {
+        e.stopPropagation();
+        navLinks.classList.toggle('active');
+      });
+    }
+    // Close mobile menu on link click
+    document.querySelectorAll('.nav-links a').forEach(link => {
+      link.addEventListener('click', () => {
+        if(document.body.classList.contains('mobile-version') && navLinks) {
+          navLinks.classList.remove('active');
+        }
+      });
+    });
+
+    // Smooth scroll
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+      anchor.addEventListener('click', function(e) {
+        e.preventDefault();
+        const targetId = this.getAttribute('href').substring(1);
+        const target = document.getElementById(targetId);
+        if(target) {
+          target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+          if(navLinks && navLinks.classList.contains('active')) navLinks.classList.remove('active');
+        }
+      });
+    });
+
+    // Counters animation
+    function startCounters() {
+      document.querySelectorAll('.counter-num').forEach(counter => {
+        if(counter.getAttribute('data-counted') === 'true') return;
+        const target = parseFloat(counter.getAttribute('data-target'));
+        if(isNaN(target)) return;
+        let current = 0;
+        const increment = target / 45;
+        const update = () => {
+          current += increment;
+          if(current < target) {
+            counter.innerText = Math.floor(current);
+            requestAnimationFrame(update);
+          } else { counter.innerText = target; }
+        };
+        update();
+        counter.setAttribute('data-counted', 'true');
+      });
+    }
+    window.addEventListener('load', () => {
+      startCounters();
+      document.querySelectorAll('.fade-up').forEach(el => {
+        if(el.getBoundingClientRect().top < window.innerHeight-100) el.classList.add('visible');
+      });
+    });
+
+    // Word file saving (aviword.docx)
+    function saveEnquiryToWord(name, email, message) {
+      const timestamp = new Date().toLocaleString('en-AU', { timeZone: 'Australia/Melbourne' });
+      const docHtml = `<!DOCTYPE html>
+<html>
+<head><meta charset="UTF-8"><title>Enquiry from Digital IT Move</title>
+<style>body { font-family: 'Calibri', 'Segoe UI', Arial, sans-serif; margin: 40px; line-height: 1.6; } h1 { color: #0052D4; border-bottom: 2px solid #0052D4; } .details { background: #f5f7fa; padding: 20px; border-radius: 12px; } .field { margin: 12px 0; } .label { font-weight: bold; } .whatsapp { background: #25D36610; padding: 10px; border-radius: 12px; margin-top: 15px; }</style>
+</head>
+<body>
+<h1>📋 New Enquiry - Digital IT Move</h1>
+<div class="details">
+  <div class="field"><span class="label">📛 Full Name:</span> ${escapeHtml(name)}</div>
+  <div class="field"><span class="label">✉️ Email:</span> ${escapeHtml(email)}</div>
+  <div class="field"><span class="label">💬 Message:</span> <div>${escapeHtml(message)}</div></div>
+  <div class="field"><span class="label">🕒 Submitted:</span> ${timestamp}</div>
+</div>
+<div class="whatsapp"><strong>💬 WhatsApp Contact:</strong> +61 410 237 261</div>
+<div class="footer"><p>This enquiry was generated from the Digital IT Move website contact form.</p><p>📧 Respond to: ${escapeHtml(email)}</p></div>
+</body>
+</html>`;
+      const blob = new Blob([docHtml], { type: 'application/msword' });
+      saveAs(blob, 'aviword.docx');
+      return true;
+    }
     
-    if(!name || !email || !message) {
-      feedbackDiv.innerHTML = '<span style="color:#e11d48;">⚠️ Please fill in all fields.</span>';
-      return;
+    function escapeHtml(str) {
+      if (!str) return '';
+      return str.replace(/[&<>]/g, function(m) {
+        if (m === '&') return '&amp;';
+        if (m === '<') return '&lt;';
+        if (m === '>') return '&gt;';
+        return m;
+      });
     }
-    const emailPattern = /^[^\s@]+@([^\s@.,]+\.)+[^\s@.,]{2,}$/;
-    if(!emailPattern.test(email)) {
-      feedbackDiv.innerHTML = '<span style="color:#e11d48;">📧 Please enter a valid email address.</span>';
-      return;
-    }
-    // Simulate sending message
-    feedbackDiv.innerHTML = '<span style="color:#10b981;">✅ Message sent! Our team will contact you shortly.</span>';
-    contactForm.reset();
-    setTimeout(() => {
-      feedbackDiv.innerHTML = '';
-    }, 4000);
-  });
 
-  // -------------------- Nav active highlight on scroll --------------------
-  const sections = document.querySelectorAll('section, .hero');
-  const navItems = document.querySelectorAll('.nav-link');
-  window.addEventListener('scroll', () => {
-    let current = "";
-    const scrollPos = window.scrollY + 120;
-    sections.forEach(section => {
-      const sectionTop = section.offsetTop;
-      const sectionHeight = section.offsetHeight;
-      if(section.id && scrollPos >= sectionTop && scrollPos < sectionTop + sectionHeight) {
-        current = section.id;
-      }
-    });
-    if(!current && window.scrollY < 100) current = "home";
-    navItems.forEach(link => {
-      link.classList.remove('active');
-      if(link.getAttribute('href') === `#${current}`) {
-        link.classList.add('active');
-      }
-    });
-  });
-  // Hero card interactive: small pulse on hero card
-  const heroCardBtn = document.querySelector('.hero-card .btn-primary');
-  if(heroCardBtn) heroCardBtn.addEventListener('click', () => alert("🚀 Let's move your digital presence forward!"));
+    const contactForm = document.getElementById('contactForm');
+    const sendBtn = document.getElementById('sendBtn');
+    const feedbackDiv = document.getElementById('formFeedback');
+    
+    if(contactForm) {
+      contactForm.addEventListener('submit', async (e) => {
+        e.preventDefault();
+        const name = document.getElementById('nameField').value.trim();
+        const email = document.getElementById('emailField').value.trim();
+        const message = document.getElementById('msgField').value.trim() || 'No specific message provided.';
+        if (!name || !email) {
+          feedbackDiv.innerHTML = '<span class="feedback-error"><i class="fas fa-exclamation-triangle"></i> Please fill name and email.</span>';
+          return;
+        }
+        const emailPattern = /^[^\s@]+@([^\s@]+\.)+[^\s@]+$/;
+        if (!emailPattern.test(email)) {
+          feedbackDiv.innerHTML = '<span class="feedback-error"><i class="fas fa-envelope"></i> Please enter a valid business email.</span>';
+          return;
+        }
+        sendBtn.disabled = true;
+        sendBtn.innerHTML = '<span class="spinner"></span> Saving to Word file...';
+        feedbackDiv.innerHTML = '';
+        try {
+          saveEnquiryToWord(name, email, message);
+          let allEnquiries = [];
+          try { const stored = localStorage.getItem('digitalITMove_enquiries'); if(stored) allEnquiries = JSON.parse(stored); } catch(e) {}
+          allEnquiries.push({ name, email, message, timestamp: new Date().toISOString() });
+          localStorage.setItem('digitalITMove_enquiries', JSON.stringify(allEnquiries));
+          feedbackDiv.innerHTML = '<span class="feedback-success"><i class="fas fa-check-circle"></i> ✅ Enquiry saved to <strong>aviword.docx</strong> (downloaded). Our team will contact you soon! You can also WhatsApp us at +61 410 237 261.</span>';
+          contactForm.reset();
+        } catch (error) {
+          feedbackDiv.innerHTML = '<span class="feedback-error"><i class="fas fa-times-circle"></i> Unable to save Word file. Please try again or reach us on WhatsApp.</span>';
+        } finally {
+          sendBtn.disabled = false;
+          sendBtn.innerHTML = '<i class="fas fa-paper-plane"></i> Send enquiry & save to Word';
+          setTimeout(() => { if(feedbackDiv) feedbackDiv.innerHTML = ''; }, 6000);
+        }
+      });
+    }
+
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => { if(entry.isIntersecting) { entry.target.classList.add('visible'); observer.unobserve(entry.target); } });
+    }, { threshold: 0.2 });
+    document.querySelectorAll('.glass-card, .metrics-flex, .hero').forEach(el => observer.observe(el));
+  })();
 </script>
 </body>
 </html>
