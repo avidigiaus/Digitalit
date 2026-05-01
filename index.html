@@ -3,20 +3,13 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
-  <title>Digital IT Move | Data, Cloud & Digital Marketing Australia</title>
+  <title>Digital IT Move – Data, Cloud & Digital Marketing Australia</title>
   <!-- Google Fonts + Font Awesome 6 -->
   <link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,300;14..32,400;14..32,500;14..32,600;14..32,700;14..32,800&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
-  <!-- FileSaver.js for saving Word file -->
   <script src="https://cdnjs.cloudflare.com/ajax/libs/FileSaver.js/2.0.5/FileSaver.min.js"></script>
   <style>
-    /* ----- BASE RESET & GLOBAL ----- */
-    * {
-      margin: 0;
-      padding: 0;
-      box-sizing: border-box;
-    }
-
+    * { margin: 0; padding: 0; box-sizing: border-box; }
     body {
       font-family: 'Inter', sans-serif;
       background-color: #fbfdfe;
@@ -24,27 +17,15 @@
       line-height: 1.5;
       scroll-behavior: smooth;
     }
-
-    .container {
-      max-width: 1280px;
-      margin: 0 auto;
-      padding: 0 24px;
-    }
-
-    /* shared components */
+    .container { max-width: 1280px; margin: 0 auto; padding: 0 24px; }
     .glass-card {
       background: rgba(255,255,255,0.96);
-      backdrop-filter: blur(0px);
       border-radius: 32px;
       box-shadow: 0 20px 35px -12px rgba(0,0,0,0.05), 0 1px 2px rgba(0,0,0,0.02);
       transition: all 0.3s ease;
       border: 1px solid rgba(0, 82, 212, 0.08);
     }
-    .glass-card:hover {
-      transform: translateY(-6px);
-      box-shadow: 0 30px 40px -18px rgba(0,0,0,0.15);
-      border-color: rgba(0, 112, 243, 0.2);
-    }
+    .glass-card:hover { transform: translateY(-6px); box-shadow: 0 30px 40px -18px rgba(0,0,0,0.15); border-color: rgba(0, 112, 243, 0.2); }
     .btn-primary {
       background: linear-gradient(105deg, #0052D4 0%, #4361EE 100%);
       color: white;
@@ -61,11 +42,7 @@
       gap: 8px;
       text-decoration: none;
     }
-    .btn-primary:hover {
-      transform: scale(1.02);
-      background: linear-gradient(105deg, #0040b0 0%, #2b4cd4 100%);
-      box-shadow: 0 8px 20px rgba(0,82,212,0.35);
-    }
+    .btn-primary:hover { transform: scale(1.02); background: linear-gradient(105deg, #0040b0 0%, #2b4cd4 100%); box-shadow: 0 8px 20px rgba(0,82,212,0.35); }
     .btn-outline {
       background: transparent;
       border: 1.5px solid #0052D4;
@@ -73,30 +50,18 @@
       padding: 10px 24px;
       border-radius: 40px;
       font-weight: 600;
-      transition: 0.2s;
       text-decoration: none;
       display: inline-flex;
       align-items: center;
       gap: 8px;
     }
-    .btn-outline:hover {
-      background: #0052D410;
-      border-color: #003d9e;
-    }
-    .btn-whatsapp {
-      background: linear-gradient(105deg, #25D366 0%, #128C7E 100%);
-      box-shadow: 0 4px 12px rgba(37, 211, 102, 0.25);
-    }
-    .btn-whatsapp:hover {
-      background: linear-gradient(105deg, #20b859 0%, #0e6d62 100%);
-      box-shadow: 0 8px 20px rgba(37, 211, 102, 0.35);
-    }
+    .btn-outline:hover { background: #0052D410; border-color: #003d9e; }
+    .btn-whatsapp { background: linear-gradient(105deg, #25D366 0%, #128C7E 100%); box-shadow: 0 4px 12px rgba(37, 211, 102, 0.25); }
     .badge-tag {
       background: white;
       padding: 8px 20px;
       border-radius: 60px;
       font-weight: 500;
-      box-shadow: 0 2px 6px rgba(0,0,0,0.03);
       border: 1px solid #caddf0;
       display: inline-flex;
       align-items: center;
@@ -113,44 +78,9 @@
       color: transparent;
       line-height: 1.3;
     }
-    .section-sub {
-      font-size: 1.1rem;
-      color: #4a627a;
-      max-width: 720px;
-      margin-bottom: 48px;
-    }
-    .card-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-      gap: 32px;
-      margin-top: 20px;
-    }
-    .feature-icon {
-      font-size: 2.5rem;
-      color: #0052D4;
-      margin-bottom: 20px;
-      display: inline-block;
-    }
-    .metrics-flex {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 32px;
-      justify-content: space-between;
-      background: #ffffffdd;
-      border-radius: 40px;
-      padding: 32px 28px;
-      backdrop-filter: blur(4px);
-      border: 1px solid #eef2ff;
-    }
-    .metric-item {
-      flex: 1;
-      text-align: center;
-    }
-    .counter-num {
-      font-size: 3rem;
-      font-weight: 800;
-      color: #0052D4;
-    }
+    .section-sub { font-size: 1.1rem; color: #4a627a; max-width: 720px; margin-bottom: 48px; }
+    .card-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 32px; margin-top: 20px; }
+    .feature-icon { font-size: 2.5rem; color: #0052D4; margin-bottom: 20px; display: inline-block; }
     .whatsapp-float {
       position: fixed;
       bottom: 30px;
@@ -165,19 +95,10 @@
       justify-content: center;
       font-size: 2rem;
       box-shadow: 0 4px 15px rgba(0,0,0,0.2);
-      transition: all 0.3s ease;
       z-index: 99;
       text-decoration: none;
     }
-    .whatsapp-float:hover {
-      transform: scale(1.1);
-      background-color: #20b359;
-    }
-    footer {
-      background: #0A1927;
-      color: #cbd5e1;
-      padding: 48px 0 24px;
-    }
+    footer { background: #0A1927; color: #cbd5e1; padding: 48px 0 24px; }
     .contact-form input, .contact-form textarea {
       width: 100%;
       padding: 14px 18px;
@@ -188,34 +109,10 @@
       margin-bottom: 16px;
       transition: 0.2s;
     }
-    .contact-form input:focus, .contact-form textarea:focus {
-      outline: none;
-      border-color: #0052D4;
-      box-shadow: 0 0 0 3px rgba(0,82,212,0.1);
-    }
+    .contact-form input:focus, .contact-form textarea:focus { outline: none; border-color: #0052D4; box-shadow: 0 0 0 3px rgba(0,82,212,0.1); }
     .feedback-success { color: #2b7a3e; background: #e9f7ef; padding: 10px 16px; border-radius: 40px; font-size: 0.9rem; display: inline-block; width: 100%; text-align: center; }
-    .feedback-error { color: #d9534f; background: #fdf7f7; padding: 10px 16px; border-radius: 40px; font-size: 0.9rem; display: inline-block; width: 100%; text-align: center; }
-    .spinner {
-      display: inline-block;
-      width: 18px;
-      height: 18px;
-      border: 2px solid rgba(255,255,255,0.3);
-      border-radius: 50%;
-      border-top-color: white;
-      animation: spin 0.6s linear infinite;
-      margin-right: 8px;
-    }
+    .spinner { display: inline-block; width: 18px; height: 18px; border: 2px solid rgba(255,255,255,0.3); border-radius: 50%; border-top-color: white; animation: spin 0.6s linear infinite; margin-right: 8px; }
     @keyframes spin { to { transform: rotate(360deg); } }
-    .fade-up {
-      opacity: 0;
-      transform: translateY(28px);
-      transition: opacity 0.7s cubic-bezier(0.2, 0.9, 0.4, 1), transform 0.7s ease;
-    }
-    .fade-up.visible {
-      opacity: 1;
-      transform: translateY(0);
-    }
-    /* desktop navigation */
     nav {
       background: rgba(255,255,255,0.96);
       backdrop-filter: blur(12px);
@@ -241,29 +138,10 @@
       font-weight: 800;
       letter-spacing: -0.3px;
     }
-    .nav-links {
-      display: flex;
-      gap: 32px;
-      align-items: center;
-      flex-wrap: wrap;
-    }
-    .nav-links a {
-      text-decoration: none;
-      font-weight: 500;
-      color: #1e2f3f;
-      transition: 0.2s;
-      font-size: 0.95rem;
-    }
-    .nav-links a:hover { color: #0052D4; }
-    .menu-btn {
-      display: none;
-      font-size: 1.6rem;
-      background: none;
-      border: none;
-      cursor: pointer;
-      color: #1A2C3E;
-    }
-    /* ----- MOBILE VERSION OVERRIDES (will be forced via body class .mobile-version) ----- */
+    .nav-links { display: flex; gap: 32px; align-items: center; flex-wrap: wrap; }
+    .nav-links a { text-decoration: none; font-weight: 500; color: #1e2f3f; transition: 0.2s; font-size: 0.95rem; }
+    .nav-links a:hover, .nav-links a.active { color: #0052D4; border-bottom: 2px solid #0052D4; padding-bottom: 4px; }
+    .menu-btn { display: none; font-size: 1.6rem; background: none; border: none; cursor: pointer; color: #1A2C3E; }
     body.mobile-version .nav-links {
       display: none;
       flex-direction: column;
@@ -277,66 +155,23 @@
       box-shadow: 0 20px 30px rgba(0,0,0,0.05);
       border-radius: 0 0 28px 28px;
     }
-    body.mobile-version .nav-links.active {
-      display: flex;
-    }
-    body.mobile-version .menu-btn {
-      display: block;
-    }
-    body.mobile-version .hero-grid {
-      flex-direction: column;
-    }
-    body.mobile-version .section-title {
-      font-size: 1.9rem;
-    }
-    body.mobile-version .logo-text {
-      font-size: 1.3rem;
-    }
-    body.mobile-version .whatsapp-float {
-      width: 50px;
-      height: 50px;
-      font-size: 1.6rem;
-      bottom: 20px;
-      right: 20px;
-    }
-    body.mobile-version .container {
-      padding: 0 20px;
-    }
-    body.mobile-version .card-grid {
-      gap: 24px;
-    }
-    body.mobile-version .metrics-flex {
-      flex-direction: column;
-      gap: 24px;
-    }
-    /* ensure all responsive sections adapt */
-    .hero-grid {
-      display: flex;
-      flex-wrap: wrap;
-      align-items: center;
-      gap: 40px;
-    }
-    .hero-content {
-      flex: 1;
-    }
+    body.mobile-version .nav-links.active { display: flex; }
+    body.mobile-version .menu-btn { display: block; }
+    body.mobile-version .hero-grid { flex-direction: column; }
+    body.mobile-version .section-title { font-size: 1.9rem; }
+    body.mobile-version .whatsapp-float { width: 50px; height: 50px; font-size: 1.6rem; bottom: 20px; right: 20px; }
+    .hero-grid { display: flex; flex-wrap: wrap; align-items: center; gap: 40px; }
+    .hero-content { flex: 1; }
     @media (max-width: 880px) {
-      /* default responsive fallback - but our device detection forces class, still works */
-      body:not(.desktop-version) .nav-links {
-        display: none;
-      }
-      body:not(.desktop-version) .menu-btn {
-        display: block;
-      }
-      body:not(.desktop-version) .hero-grid {
-        flex-direction: column;
-      }
+      body:not(.desktop-version) .nav-links { display: none; }
+      body:not(.desktop-version) .menu-btn { display: block; }
+      body:not(.desktop-version) .hero-grid { flex-direction: column; }
     }
   </style>
 </head>
 <body>
-<!-- Floating WhatsApp Button -->
-<a href="https://wa.me/61410237261?text=Hello%20Digital%20IT%20Move%2C%20I%27m%20interested%20in%20your%20data%2C%20cloud%20and%20digital%20services.%20Can%20we%20chat%3F" 
-   class="whatsapp-float" target="_blank" rel="noopener noreferrer">
+
+<a href="https://wa.me/61410237261?text=Hello%20Digital%20IT%20Move%2C%20I%27m%20interested%20in%20your%20services." class="whatsapp-float" target="_blank" rel="noopener noreferrer">
   <i class="fab fa-whatsapp"></i>
 </a>
 
@@ -347,21 +182,21 @@
     </div>
     <button class="menu-btn" id="menuBtn" aria-label="Menu"><i class="fas fa-bars"></i></button>
     <div class="nav-links" id="navLinks">
-      <a href="#home">Home</a>
-      <a href="#services">Services</a>
-      <a href="#data-engineering">Data & Analytics</a>
-      <a href="#automation">Automation</a>
-      <a href="#cloud">Cloud</a>
-      <a href="#marketing">Marketing</a>
-      <a href="#training">Training</a>
-      <a href="#clients">Clients</a>
-      <a href="#contact">Contact</a>
+      <a href="index.html" data-page="home">Home</a>
+      <a href="services.html" data-page="services">Services</a>
+      <a href="data-analytics.html" data-page="data-engineering">Data & Analytics</a>
+      <a href="automation.html" data-page="automation">Automation</a>
+      <a href="cloud.html" data-page="cloud">Cloud</a>
+      <a href="marketing.html" data-page="marketing">Marketing</a>
+      <a href="training.html" data-page="training">Training</a>
+      <a href="clients.html" data-page="clients">Clients</a>
+      <a href="contact.html" data-page="contact">Contact</a>
     </div>
   </div>
 </nav>
 
 <main>
-  <!-- Hero Section -->
+  <!-- HERO SECTION (Home) -->
   <section id="home" class="hero" style="padding: 80px 0 70px; background: linear-gradient(145deg, #ffffff 0%, #f5f9ff 100%);">
     <div class="container hero-grid">
       <div class="hero-content">
@@ -369,7 +204,7 @@
         <h1 style="font-size: 3.2rem; font-weight: 800; line-height: 1.2; margin-bottom: 20px;">Modernize with <span style="color:#0052D4;">Data, Cloud & Digital</span> Solutions</h1>
         <p style="font-size: 1.2rem; color: #2c475e; margin-bottom: 32px;">End-to-end digital, data, and IT services designed for Australian businesses. We combine cloud technologies with practical use cases to deliver efficiency, smarter decisions, and scalable growth.</p>
         <div>
-          <a href="#contact" class="btn-primary"><i class="fas fa-rocket"></i> Start your project</a>
+          <a href="contact.html" class="btn-primary"><i class="fas fa-rocket"></i> Start your project</a>
           <a href="https://wa.me/61410237261?text=Hello%20Digital%20IT%20Move%2C%20I%27d%20like%20to%20discuss%20services" class="btn-primary btn-whatsapp" style="margin-left: 16px; background: linear-gradient(105deg, #25D366, #128C7E);" target="_blank"><i class="fab fa-whatsapp"></i> Chat on WhatsApp</a>
         </div>
       </div>
@@ -404,86 +239,8 @@
     </div>
   </section>
 
-  <!-- Comprehensive Services Section -->
-  <section id="services">
-    <div class="container">
-      <h2 class="section-title">Our Services: Data, Cloud & Digital Integration</h2>
-      <p class="section-sub">We provide end-to-end digital, data, and IT solutions that help businesses operate efficiently, make smarter decisions, and scale with confidence.</p>
-      <div id="data-engineering" style="margin-bottom: 60px;">
-        <div style="display: flex; flex-wrap: wrap; gap: 32px; align-items: center;">
-          <div style="flex: 1; min-width: 280px;"><i class="fas fa-database feature-icon" style="font-size: 3rem;"></i><h3 style="font-size: 2rem; margin-bottom: 12px;">Data Engineering & Analytics</h3><p style="color: #2c475e; margin-bottom: 20px;">Transform raw data into actionable insights with scalable systems. We build automated data pipelines, integrate multiple sources, and develop robust data warehouses and data lakes.</p><p><strong>Tools:</strong> Azure Data Factory, Databricks, SQL-based systems</p><p><strong>BI & Dashboards:</strong> Interactive Power BI reports for real-time KPI tracking.</p></div>
-          <div style="flex: 1; text-align: center;"><i class="fas fa-chart-bar" style="font-size: 10rem; color: #d4e2fc;"></i></div>
-        </div>
-      </div>
-      <div id="automation" style="margin-bottom: 60px;">
-        <div style="display: flex; flex-wrap: wrap; gap: 32px; align-items: center;">
-          <div style="flex: 1; text-align: center;"><i class="fas fa-cogs" style="font-size: 10rem; color: #d4e2fc;"></i></div>
-          <div style="flex: 1; min-width: 280px;"><i class="fas fa-robot feature-icon" style="font-size: 3rem;"></i><h3 style="font-size: 2rem; margin-bottom: 12px;">Business Process Automation</h3><p style="color: #2c475e; margin-bottom: 20px;">Automate repetitive tasks using Power Automate and Azure Logic Apps, reducing errors and improving efficiency.</p></div>
-        </div>
-      </div>
-      <div id="cloud" style="margin-bottom: 60px;">
-        <div style="display: flex; flex-wrap: wrap; gap: 32px; align-items: center;">
-          <div style="flex: 1; min-width: 280px;"><i class="fas fa-cloud-upload-alt feature-icon" style="font-size: 3rem;"></i><h3 style="font-size: 2rem; margin-bottom: 12px;">Cloud Solutions & Migration</h3><p style="color: #2c475e; margin-bottom: 20px;">Modernize IT infrastructure with secure, scalable cloud architectures. Smooth transitions to Microsoft Azure.</p></div>
-          <div style="flex: 1; text-align: center;"><i class="fas fa-server" style="font-size: 10rem; color: #d4e2fc;"></i></div>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- Digital Marketing -->
-  <section id="marketing" style="background: #f6fafd;">
-    <div class="container">
-      <h2 class="section-title">Digital Marketing & Analytics</h2>
-      <p class="section-sub">Performance-focused marketing combined with data analytics. Every campaign measured, analyzed, and refined.</p>
-      <div class="card-grid">
-        <div class="glass-card" style="padding: 28px;"><i class="fas fa-search feature-icon"></i><h3>SEO for Tech Audiences</h3><p>High-intent keywords reaching decision-makers across Australia.</p></div>
-        <div class="glass-card" style="padding: 28px;"><i class="fas fa-ad feature-icon"></i><h3>Paid Advertising</h3><p>Smart bidding on Google, LinkedIn & industry channels.</p></div>
-        <div class="glass-card" style="padding: 28px;"><i class="fas fa-chart-line feature-icon"></i><h3>Campaign Analytics</h3><p>Complete visibility with performance dashboards.</p></div>
-        <div class="glass-card" style="padding: 28px;"><i class="fas fa-bullseye feature-icon"></i><h3>Data-Driven Strategy</h3><p>Every marketing dollar measured for impact.</p></div>
-      </div>
-    </div>
-  </section>
-
-  <!-- Training -->
-  <section id="training">
-    <div class="container">
-      <div style="display: flex; flex-wrap: wrap; gap: 40px; align-items: center;">
-        <div style="flex: 1; min-width: 280px;"><h2 class="section-title">Training & Consulting</h2><p style="font-size: 1.2rem; color: #2c475e; margin-bottom: 24px;">Empower your team with practical, hands-on sessions on data and cloud technologies.</p><div style="display: flex; flex-wrap: wrap; gap: 16px;"><span class="badge-tag"><i class="fas fa-database"></i> SQL & Data Analytics</span><span class="badge-tag"><i class="fas fa-cloud"></i> Cloud Technologies</span><span class="badge-tag"><i class="fas fa-chart-pie"></i> BI Tools</span></div><a href="#contact" class="btn-primary" style="margin-top: 20px;"><i class="fas fa-chalkboard-teacher"></i> Enquire about training</a></div>
-        <div style="flex: 1; text-align: center;"><i class="fas fa-users-cog" style="font-size: 12rem; color: #cbdffc;"></i></div>
-      </div>
-    </div>
-  </section>
-
-  <!-- IT Support & Metrics -->
-  <section id="it-services" style="background: #ffffff;">
-    <div class="container">
-      <h2 class="section-title">IT Support & Managed Services</h2>
-      <div class="card-grid">
-        <div class="glass-card"><div style="padding: 24px;"><i class="fas fa-headset feature-icon"></i><h3>IT Helpdesk Support</h3><p>L1/L2/L3 support, ticket resolution, remote assistance.</p></div></div>
-        <div class="glass-card"><div style="padding: 24px;"><i class="fas fa-wifi feature-icon"></i><h3>Network Support</h3><p>LAN/WAN/Wi-Fi, VPN, monitoring & optimisation.</p></div></div>
-        <div class="glass-card"><div style="padding: 24px;"><i class="fas fa-shield-alt feature-icon"></i><h3>Security Support</h3><p>Endpoint protection, patch management, compliance.</p></div></div>
-      </div>
-      <div class="metrics-flex" style="margin-top: 40px;">
-        <div class="metric-item"><span class="counter-num" data-target="99">0</span>%<h4>SLA Compliance</h4></div>
-        <div class="metric-item"><span class="counter-num" data-target="87">0</span>%<h4>First-Call Resolution</h4></div>
-        <div class="metric-item"><span class="counter-num" data-target="99.99">0</span>%<h4>Network Uptime</h4></div>
-      </div>
-    </div>
-  </section>
-
-  <!-- Clients -->
-  <section id="clients">
-    <div class="container">
-      <h2 class="section-title">Trusted by Australian Technology Leaders</h2>
-      <div class="glass-card" style="padding: 36px;">
-        <h3><i class="fas fa-shield-alt"></i> Case Study: Cybersecurity Services Provider</h3>
-        <p>Result: 40% faster resolution, enhanced security posture.</p>
-      </div>
-    </div>
-  </section>
-
-  <!-- Offices (Australia, India, UAE) -->
-  <section style="background: #F9FCFE;">
+  <!-- Office Locations (Compact) -->
+  <section style="background: #F9FCFE; padding: 40px 0;">
     <div class="container">
       <div class="glass-card" style="text-align: center; padding: 32px; margin-bottom: 30px;">
         <i class="fas fa-map-marker-alt" style="font-size: 2rem; color:#0052D4;"></i>
@@ -492,28 +249,22 @@
         <p><i class="fas fa-envelope"></i> deepak.digiaus03@gmail.com | <i class="fas fa-phone-alt"></i> +61 0 410 237 261</p>
         <div style="margin-top: 20px;"><a href="https://wa.me/61410237261?text=Hello%20Digital%20IT%20Move" target="_blank" class="btn-primary btn-whatsapp" style="background: linear-gradient(105deg, #25D366, #128C7E); display: inline-flex;"><i class="fab fa-whatsapp"></i> Message us on WhatsApp</a></div>
       </div>
-      <div class="glass-card" style="text-align: center; padding: 32px; margin-bottom: 30px;">
-        <i class="fas fa-map-marker-alt" style="font-size: 2rem; color:#0052D4;"></i>
-        <h3>Indian Office</h3>
-        <p>C/o Avi Patmase, Plot No. 121 B Shri Purna Layout Dabha Nagpur 440023, Nagpur, Maharashtra, India</p>
-        <p><i class="fas fa-envelope"></i> avi.digiaus03@gmail.com | <i class="fas fa-phone-alt"></i> +91 920 163 7371</p>
-        <div style="margin-top: 20px;"><a href="https://wa.me/919201637371?text=Hello%20Digital%20IT%20Move" target="_blank" class="btn-primary btn-whatsapp" style="background: linear-gradient(105deg, #25D366, #128C7E); display: inline-flex;"><i class="fab fa-whatsapp"></i> Message us on WhatsApp</a></div>
-      </div>
-      <div class="glass-card" style="text-align: center; padding: 32px;">
-        <i class="fas fa-map-marker-alt" style="font-size: 2rem; color:#0052D4;"></i>
-        <h3>U.A.E. Office</h3>
-        <p>C/o Sneha Kohale, D 102 China Cluster International City Dubai, United Arab Emirates (UAE)</p>
-        <p><i class="fas fa-envelope"></i> sneha.digiaus03@gmail.com | <i class="fas fa-phone-alt"></i> +91 898 315 3097</p>
-      </div>
     </div>
   </section>
 
-  <!-- Contact Form -->
-  <section id="contact">
+  <!-- IT Stats -->
+  <section id="it-services" style="background: #ffffff; padding: 40px 0;">
     <div class="container">
-      <div style="display: flex; flex-wrap: wrap; gap: 48px;">
-        <div style="flex:1"><h2 class="section-title">Let’s Transform Your Business</h2><p>Get a tailored strategy for data, cloud, automation or digital marketing.</p><div style="margin-top: 24px;"><a href="https://wa.me/61410237261?text=I%27m%20interested%20in%20Digital%20IT%20Move%20services" target="_blank" class="btn-outline" style="border-color:#25D366; color:#25D366;"><i class="fab fa-whatsapp"></i> WhatsApp +61 410 237 261</a></div></div>
-        <div style="flex:1"><form id="contactForm" class="contact-form"><input type="text" placeholder="Full name" id="nameField" required><input type="email" placeholder="Business email" id="emailField" required><textarea rows="3" placeholder="Tell us about your data, cloud or IT needs..." id="msgField"></textarea><button type="submit" id="sendBtn" class="btn-primary" style="width:100%;"><i class="fas fa-paper-plane"></i> Send enquiry & save to Word</button><p id="formFeedback" style="margin-top: 16px; font-size:0.9rem; text-align:center;"></p></form></div>
+      <h2 class="section-title">IT Support & Managed Services</h2>
+      <div class="card-grid">
+        <div class="glass-card"><div style="padding: 24px;"><i class="fas fa-headset feature-icon"></i><h3>IT Helpdesk Support</h3><p>L1/L2/L3 support, ticket resolution, remote assistance.</p></div></div>
+        <div class="glass-card"><div style="padding: 24px;"><i class="fas fa-wifi feature-icon"></i><h3>Network Support</h3><p>LAN/WAN/Wi-Fi, VPN, monitoring & optimisation.</p></div></div>
+        <div class="glass-card"><div style="padding: 24px;"><i class="fas fa-shield-alt feature-icon"></i><h3>Security Support</h3><p>Endpoint protection, patch management, compliance.</p></div></div>
+      </div>
+      <div class="metrics-flex" style="display: flex; flex-wrap: wrap; gap: 32px; justify-content: space-between; background: #ffffffdd; border-radius: 40px; padding: 32px 28px; margin-top: 40px; border:1px solid #eef2ff;">
+        <div class="metric-item" style="flex:1; text-align:center;"><span class="counter-num" data-target="99">0</span>%<h4>SLA Compliance</h4></div>
+        <div class="metric-item" style="flex:1; text-align:center;"><span class="counter-num" data-target="87">0</span>%<h4>First-Call Resolution</h4></div>
+        <div class="metric-item" style="flex:1; text-align:center;"><span class="counter-num" data-target="99.99">0</span>%<h4>Network Uptime</h4></div>
       </div>
     </div>
   </section>
@@ -532,77 +283,38 @@
 
 <script>
   (function() {
-    // ---------- DEVICE DETECTION: desktop vs mobile (laptop, desktop -> desktop version ; mobile devices -> mobile version) ----------
-    function detectAndApplyDeviceVersion() {
-      const isMobile = /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini|Mobile|Tablet|iPad|Android.*Mobile/i.test(navigator.userAgent) 
-                       || (window.innerWidth <= 880); // also fallback for width
+    // Device detection + mobile menu
+    function detectDevice() {
+      const isMobile = /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini|Mobile|Tablet|iPad/i.test(navigator.userAgent) || window.innerWidth <= 880;
       const body = document.body;
-      // remove any previous classes
       body.classList.remove('mobile-version', 'desktop-version');
-      if (isMobile) {
-        body.classList.add('mobile-version');
-        // ensure mobile specific menu functionality
-        console.log('Mobile version activated');
-      } else {
-        body.classList.add('desktop-version');
-        console.log('Desktop version activated');
-        // on desktop ensure nav links are always visible via inline style reset but keep desktop layout
-        const navLinkDiv = document.getElementById('navLinks');
-        if(navLinkDiv && window.innerWidth > 880) {
-          navLinkDiv.style.display = 'flex';
-        }
-      }
-      // if width changes (resize) sync
-      window.addEventListener('resize', function() {
-        const nowMobile = window.innerWidth <= 880;
-        if(nowMobile && !body.classList.contains('mobile-version')) {
-          body.classList.remove('desktop-version');
-          body.classList.add('mobile-version');
-        } else if(!nowMobile && !body.classList.contains('desktop-version')) {
-          body.classList.remove('mobile-version');
-          body.classList.add('desktop-version');
-          const navLinkDiv2 = document.getElementById('navLinks');
-          if(navLinkDiv2) navLinkDiv2.style.display = 'flex';
-        }
-        if(window.innerWidth > 880) {
-          const mobileNav = document.getElementById('navLinks');
-          if(mobileNav) mobileNav.classList.remove('active');
-        }
+      if(isMobile) body.classList.add('mobile-version');
+      else body.classList.add('desktop-version');
+      window.addEventListener('resize', () => {
+        let nowMobile = window.innerWidth <= 880;
+        if(nowMobile && !body.classList.contains('mobile-version')) { body.classList.remove('desktop-version'); body.classList.add('mobile-version'); }
+        else if(!nowMobile && !body.classList.contains('desktop-version')) { body.classList.remove('mobile-version'); body.classList.add('desktop-version'); const navLinkDiv = document.getElementById('navLinks'); if(navLinkDiv) navLinkDiv.style.display = 'flex'; }
+        if(window.innerWidth > 880) { const mn = document.getElementById('navLinks'); if(mn) mn.classList.remove('active'); }
       });
     }
-    detectAndApplyDeviceVersion();
-
-    // Mobile menu toggle
+    detectDevice();
+    
     const menuBtn = document.getElementById('menuBtn');
     const navLinks = document.getElementById('navLinks');
-    if(menuBtn) {
-      menuBtn.addEventListener('click', (e) => {
-        e.stopPropagation();
-        navLinks.classList.toggle('active');
-      });
-    }
-    // Close mobile menu on link click
+    if(menuBtn) menuBtn.addEventListener('click', (e) => { e.stopPropagation(); navLinks.classList.toggle('active'); });
+    document.querySelectorAll('.nav-links a').forEach(link => { link.addEventListener('click', () => { if(document.body.classList.contains('mobile-version') && navLinks) navLinks.classList.remove('active'); }); });
+    
+    // Active link highlighting based on current page (simplified match)
+    const currentPath = window.location.pathname.split('/').pop() || 'index.html';
     document.querySelectorAll('.nav-links a').forEach(link => {
-      link.addEventListener('click', () => {
-        if(document.body.classList.contains('mobile-version') && navLinks) {
-          navLinks.classList.remove('active');
-        }
-      });
+      const href = link.getAttribute('href');
+      if(href === currentPath || (currentPath === 'index.html' && href === 'index.html') || (currentPath === '' && href === 'index.html')) {
+        link.classList.add('active');
+      } else if(currentPath !== 'index.html' && href === currentPath) {
+        link.classList.add('active');
+      }
     });
-
-    // Smooth scroll
-    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-      anchor.addEventListener('click', function(e) {
-        e.preventDefault();
-        const targetId = this.getAttribute('href').substring(1);
-        const target = document.getElementById(targetId);
-        if(target) {
-          target.scrollIntoView({ behavior: 'smooth', block: 'start' });
-          if(navLinks && navLinks.classList.contains('active')) navLinks.classList.remove('active');
-        }
-      });
-    });
-
+    
     // Counters animation
     function startCounters() {
       document.querySelectorAll('.counter-num').forEach(counter => {
@@ -613,102 +325,22 @@
         const increment = target / 45;
         const update = () => {
           current += increment;
-          if(current < target) {
-            counter.innerText = Math.floor(current);
-            requestAnimationFrame(update);
-          } else { counter.innerText = target; }
+          if(current < target) { counter.innerText = Math.floor(current); requestAnimationFrame(update); }
+          else { counter.innerText = target; }
         };
         update();
         counter.setAttribute('data-counted', 'true');
       });
     }
-    window.addEventListener('load', () => {
-      startCounters();
-      document.querySelectorAll('.fade-up').forEach(el => {
-        if(el.getBoundingClientRect().top < window.innerHeight-100) el.classList.add('visible');
-      });
-    });
-
-    // Word file saving (aviword.docx)
-    function saveEnquiryToWord(name, email, message) {
-      const timestamp = new Date().toLocaleString('en-AU', { timeZone: 'Australia/Melbourne' });
-      const docHtml = `<!DOCTYPE html>
-<html>
-<head><meta charset="UTF-8"><title>Enquiry from Digital IT Move</title>
-<style>body { font-family: 'Calibri', 'Segoe UI', Arial, sans-serif; margin: 40px; line-height: 1.6; } h1 { color: #0052D4; border-bottom: 2px solid #0052D4; } .details { background: #f5f7fa; padding: 20px; border-radius: 12px; } .field { margin: 12px 0; } .label { font-weight: bold; } .whatsapp { background: #25D36610; padding: 10px; border-radius: 12px; margin-top: 15px; }</style>
-</head>
-<body>
-<h1>📋 New Enquiry - Digital IT Move</h1>
-<div class="details">
-  <div class="field"><span class="label">📛 Full Name:</span> ${escapeHtml(name)}</div>
-  <div class="field"><span class="label">✉️ Email:</span> ${escapeHtml(email)}</div>
-  <div class="field"><span class="label">💬 Message:</span> <div>${escapeHtml(message)}</div></div>
-  <div class="field"><span class="label">🕒 Submitted:</span> ${timestamp}</div>
-</div>
-<div class="whatsapp"><strong>💬 WhatsApp Contact:</strong> +61 410 237 261</div>
-<div class="footer"><p>This enquiry was generated from the Digital IT Move website contact form.</p><p>📧 Respond to: ${escapeHtml(email)}</p></div>
-</body>
-</html>`;
-      const blob = new Blob([docHtml], { type: 'application/msword' });
-      saveAs(blob, 'aviword.docx');
-      return true;
-    }
+    window.addEventListener('load', startCounters);
     
-    function escapeHtml(str) {
-      if (!str) return '';
-      return str.replace(/[&<>]/g, function(m) {
-        if (m === '&') return '&amp;';
-        if (m === '<') return '&lt;';
-        if (m === '>') return '&gt;';
-        return m;
-      });
-    }
-
-    const contactForm = document.getElementById('contactForm');
-    const sendBtn = document.getElementById('sendBtn');
-    const feedbackDiv = document.getElementById('formFeedback');
-    
-    if(contactForm) {
-      contactForm.addEventListener('submit', async (e) => {
-        e.preventDefault();
-        const name = document.getElementById('nameField').value.trim();
-        const email = document.getElementById('emailField').value.trim();
-        const message = document.getElementById('msgField').value.trim() || 'No specific message provided.';
-        if (!name || !email) {
-          feedbackDiv.innerHTML = '<span class="feedback-error"><i class="fas fa-exclamation-triangle"></i> Please fill name and email.</span>';
-          return;
-        }
-        const emailPattern = /^[^\s@]+@([^\s@]+\.)+[^\s@]+$/;
-        if (!emailPattern.test(email)) {
-          feedbackDiv.innerHTML = '<span class="feedback-error"><i class="fas fa-envelope"></i> Please enter a valid business email.</span>';
-          return;
-        }
-        sendBtn.disabled = true;
-        sendBtn.innerHTML = '<span class="spinner"></span> Saving to Word file...';
-        feedbackDiv.innerHTML = '';
-        try {
-          saveEnquiryToWord(name, email, message);
-          let allEnquiries = [];
-          try { const stored = localStorage.getItem('digitalITMove_enquiries'); if(stored) allEnquiries = JSON.parse(stored); } catch(e) {}
-          allEnquiries.push({ name, email, message, timestamp: new Date().toISOString() });
-          localStorage.setItem('digitalITMove_enquiries', JSON.stringify(allEnquiries));
-          feedbackDiv.innerHTML = '<span class="feedback-success"><i class="fas fa-check-circle"></i> ✅ Enquiry saved to <strong>aviword.docx</strong> (downloaded). Our team will contact you soon! You can also WhatsApp us at +61 410 237 261.</span>';
-          contactForm.reset();
-        } catch (error) {
-          feedbackDiv.innerHTML = '<span class="feedback-error"><i class="fas fa-times-circle"></i> Unable to save Word file. Please try again or reach us on WhatsApp.</span>';
-        } finally {
-          sendBtn.disabled = false;
-          sendBtn.innerHTML = '<i class="fas fa-paper-plane"></i> Send enquiry & save to Word';
-          setTimeout(() => { if(feedbackDiv) feedbackDiv.innerHTML = ''; }, 6000);
-        }
-      });
-    }
-
+    // fade-up observer remain.
     const observer = new IntersectionObserver((entries) => {
       entries.forEach(entry => { if(entry.isIntersecting) { entry.target.classList.add('visible'); observer.unobserve(entry.target); } });
     }, { threshold: 0.2 });
     document.querySelectorAll('.glass-card, .metrics-flex, .hero').forEach(el => observer.observe(el));
   })();
 </script>
+<!-- Separator note: other pages will be separate HTML files and should be placed in same directory -->
 </body>
 </html>
